@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,13 +27,18 @@ public class Employee {
     @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
 
+    @ManyToOne()
+    @JoinColumn(name="departmentId", insertable = true, updatable = true)
+    private Department department;
+
     public Employee() {
     }
 
-    public Employee(String firstName, String middleName, String lastName) {
+    public Employee(String firstName, String middleName, String lastName, Department department) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
+        this.department = department;
     }
 
     public Long getEmployeeID() {
@@ -62,6 +69,18 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public void setEmployeeID(Long employeeID) {
+        this.employeeID = employeeID;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -69,6 +88,7 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", department=" + department +
                 '}';
     }
 }

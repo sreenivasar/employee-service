@@ -8,67 +8,45 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EMPLOYEE")
-public class Employee {
+@Table(name = "DEPARTMENT")
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EMPLOYEE_ID")
-    private Long employeeID;
+    @Column(name = "DEPARTMENT_ID")
+    private Long departmentId;
 
-    @Column(name = "FIRST_NAME", nullable = false)
-    private String firstName;
+    @Column(name = "DEPARTMENT_NAME", nullable = false)
+    private String departmentName;
 
-    @Column(name = "MIDDLE_NAME")
-    private String middleName;
-
-    @Column(name = "LAST_NAME", nullable = false)
-    private String lastName;
-
-    public Employee() {
+    public Department() {
     }
 
-    public Employee(String firstName, String middleName, String lastName) {
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
+    public Department(String departmentName) {
+        this.departmentName = departmentName;
     }
 
-    public Long getEmployeeID() {
-        return employeeID;
+    public Long getDepartmentId() {
+        return departmentId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "employeeID=" + employeeID +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", lastName='" + lastName + '\'' +
+        return "Department{" +
+                "departmentId=" + departmentId +
+                ", departmentName='" + departmentName + '\'' +
                 '}';
     }
 }
