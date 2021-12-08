@@ -27,6 +27,9 @@ public class Employee {
     @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
 
+    @Column(name = "ADDRESS")
+    private String address;
+
     @ManyToOne()
     @JoinColumn(name="departmentId", insertable = true, updatable = true)
     private Department department;
@@ -34,10 +37,11 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String firstName, String middleName, String lastName, Department department) {
+    public Employee(String firstName, String middleName, String lastName, String address, Department department) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
+        this.address = address;
         this.department = department;
     }
 
@@ -73,6 +77,14 @@ public class Employee {
         this.employeeID = employeeID;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Department getDepartment() {
         return department;
     }
@@ -88,6 +100,7 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
                 ", department=" + department +
                 '}';
     }
